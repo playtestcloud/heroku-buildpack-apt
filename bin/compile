@@ -50,6 +50,26 @@ Pin-Priority: -10
 Package: ffmpeg
 Pin: release n=zesty
 Pin-Priority: 900
+
+Package: libavcodec57
+Pin: release n=zesty
+Pin-Priority: 900
+
+Package: libavdevice57
+Pin: release n=zesty
+Pin-Priority: 900
+
+Package: libavfilter6
+Pin: release n=zesty
+Pin-Priority: 900
+
+Package: libavformat57
+Pin: release n=zesty
+Pin-Priority: 900
+
+Package: libva1
+Pin: release n=zesty
+Pin-Priority: 900
 EOF
 printf "\ndeb http://archive.ubuntu.com/ubuntu zesty main universe" >> $SOURCES_LIST_PATH
 

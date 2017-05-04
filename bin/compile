@@ -70,6 +70,14 @@ Pin-Priority: 900
 Package: libva1
 Pin: release n=zesty
 Pin-Priority: 999
+
+Package: libtasn1-6
+Pin: release n=zesty
+Pin-Priority: 999
+
+Package: libgnutls30
+Pin: release n=zesty
+Pin-Priority: 999
 EOF
 printf "\ndeb http://archive.ubuntu.com/ubuntu zesty main universe" >> $SOURCES_LIST_PATH
 

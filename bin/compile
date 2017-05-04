@@ -37,6 +37,7 @@ export APT_CONFIG="$BUILD_DIR/apt/apt.conf"
 
 mkdir -p "$APT_CACHE_DIR/archives/partial"
 mkdir -p "$APT_STATE_DIR/lists/partial"
+mkdir -p "$BUILD_DIR/apt"
 cp /etc/apt/sources.list $SOURCES_LIST_PATH
 
 

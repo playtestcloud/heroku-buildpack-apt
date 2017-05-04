@@ -74,6 +74,8 @@ EOF
 printf "\ndeb http://archive.ubuntu.com/ubuntu zesty main universe" >> $SOURCES_LIST_PATH
 
 APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR -o Dir::Etc::SourceList=$SOURCES_LIST_PATH -o Dir::Etc::Preferences=$PREFERENCES_PATH"
+echo "Options: $APT_OPTIONS"
+echo "$APT_CONFIG"
 
 topic "Updating apt caches"
 apt-get $APT_OPTIONS update | indent

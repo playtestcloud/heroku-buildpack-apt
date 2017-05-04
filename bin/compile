@@ -51,7 +51,7 @@ Package: ffmpeg
 Pin: release n=zesty
 Pin-Priority: 900
 EOF
-printf "\ndeb http://archive.ubuntu.com/ubuntu zesty main" >> $SOURCES_LIST_PATH
+printf "\ndeb http://archive.ubuntu.com/ubuntu zesty main universe" >> $SOURCES_LIST_PATH
 
 APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR -o Dir::Etc::SourceList=$SOURCES_LIST_PATH -o Dir::Etc::Preferences=$PREFERENCES_PATH"
 

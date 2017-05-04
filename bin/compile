@@ -41,7 +41,7 @@ mkdir -p "$BUILD_DIR/apt"
 cp /etc/apt/sources.list $SOURCES_LIST_PATH
 
 
-printf "APT::Default-Release \"xenial\";" >> $APT_CONFIG
+# printf "APT::Default-Release \"xenial\";" >> $APT_CONFIG
 cat <<EOF >$PREFERENCES_PATH
 Package: ffmpeg
 Pin: release n=xenial
@@ -50,34 +50,6 @@ Pin-Priority: -10
 Package: ffmpeg
 Pin: release n=zesty
 Pin-Priority: 900
-
-Package: libavcodec57
-Pin: release n=zesty
-Pin-Priority: 900
-
-Package: libavdevice57
-Pin: release n=zesty
-Pin-Priority: 900
-
-Package: libavfilter6
-Pin: release n=zesty
-Pin-Priority: 900
-
-Package: libavformat57
-Pin: release n=zesty
-Pin-Priority: 900
-
-Package: libva1
-Pin: release n=zesty
-Pin-Priority: 999
-
-Package: libtasn1-6
-Pin: release n=zesty
-Pin-Priority: 999
-
-Package: libgnutls30
-Pin: release n=zesty
-Pin-Priority: 999
 EOF
 printf "\ndeb http://archive.ubuntu.com/ubuntu zesty main universe" >> $SOURCES_LIST_PATH
 

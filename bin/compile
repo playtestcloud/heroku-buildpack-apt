@@ -31,9 +31,9 @@ function indent() {
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
 APT_STATE_DIR="$CACHE_DIR/apt/state"
-SOURCES_LIST_PATH="$CACHE_DIR/apt/sources.list"
-PREFERENCES_PATH="$CACHE_DIR/apt/preferences"
-export APT_CONFIG="$CACHE_DIR/apt/apt.conf"
+SOURCES_LIST_PATH="$BUILD_DIR/apt/sources.list"
+PREFERENCES_PATH="$BUILD_DIR/apt/preferences"
+export APT_CONFIG="$BUILD_DIR/apt/apt.conf"
 
 mkdir -p "$APT_CACHE_DIR/archives/partial"
 mkdir -p "$APT_STATE_DIR/lists/partial"

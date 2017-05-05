@@ -31,17 +31,16 @@ function indent() {
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
 APT_STATE_DIR="$CACHE_DIR/apt/state"
-SOURCES_LIST_PATH="$BUILD_DIR/apt/sources.list"
-PREFERENCES_PATH="$BUILD_DIR/apt/preferences"
-export APT_CONFIG="$BUILD_DIR/apt/apt.conf"
+SOURCES_LIST_PATH="$CACHE_DIR/apt/sources.list"
+PREFERENCES_PATH="$CACHE_DIR/apt/preferences"
+export APT_CONFIG="$CACHE_DIR/apt/apt.conf"
 
 mkdir -p "$APT_CACHE_DIR/archives/partial"
 mkdir -p "$APT_STATE_DIR/lists/partial"
-mkdir -p "$BUILD_DIR/apt"
 cp /etc/apt/sources.list $SOURCES_LIST_PATH
 
 
-printf "APT::Default-Release \"xenial\";" >> $APT_CONFIG
+printf "APT::Default-Release \"xenial\";\n" >> $APT_CONFIG
 cat <<EOF >$PREFERENCES_PATH
 Package: ffmpeg
 Pin: release n=xenial
@@ -79,12 +78,9 @@ Package: libgnutls30
 Pin: release n=zesty
 Pin-Priority: 999
 EOF
-printf "\ndeb http://archive.ubuntu.com/ubuntu zesty main universe" >> $SOURCES_LIST_PATH
+printf "\ndeb http://archive.ubuntu.com/ubuntu zesty main universe\n" >> $SOURCES_LIST_PATH
 
 APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR -o Dir::Etc::SourceList=$SOURCES_LIST_PATH -o Dir::Etc::Preferences=$PREFERENCES_PATH"
-echo "Options: $APT_OPTIONS"
-echo "$APT_CONFIG"
-cat $PREFERENCES_PATH
 
 topic "Updating apt caches"
 apt-get $APT_OPTIONS update | indent

@@ -3,6 +3,8 @@
 
 # fail fast
 set -e
+set -o errexit    # always exit on error
+set -o pipefail   # don't ignore exit codes when piping output
 
 # debug
 # set -x
@@ -94,7 +96,7 @@ for PACKAGE in $(cat $BUILD_DIR/Aptfile); do
     curl -s -L -z $PACKAGE_FILE -o $PACKAGE_FILE $PACKAGE 2>&1 | indent
   else
     topic "Fetching .debs for $PACKAGE"
-    apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $PACKAGE | indent
+    apt-get $APT_OPTIONS -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall $PACKAGE | indent
   fi
 done
 
